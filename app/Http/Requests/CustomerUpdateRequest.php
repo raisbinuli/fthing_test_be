@@ -4,29 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
+use App\Http\Requests\FailedRequest;
 
 class CustomerUpdateRequest extends FormRequest
 {
-    protected function failedValidation(Validator $validator)
-    {
-        
-        $response = response()->json(
-            Array(
-                'result' => null,
-                'status' => Array(
-                    'response' => 'error',
-                    'message' => $validator->errors(),
-                    'code' => 422
-                )
-                
-            ),422
-        );  
-        throw (new ValidationException($validator, $response))
-            ->errorBag($this->errorBag)
-            ->redirectTo($this->getRedirectUrl());
-    }
+    use FailedRequest;
     /**
      * Determine if the user is authorized to make this request.
      *
