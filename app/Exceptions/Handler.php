@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
                         'message' => "This Customer does not exists",
                         'code' => 404
                     )
-                )
+                ),404
             );
         });
     }

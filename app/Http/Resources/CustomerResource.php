@@ -21,7 +21,6 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'address' => $this->address,
-            'quantity' => $this->quantity,
             'created_at' => $this->parseDate($this->created_at),
             'updated_at' => $this->parseDate($this->updated_at)
         ];
