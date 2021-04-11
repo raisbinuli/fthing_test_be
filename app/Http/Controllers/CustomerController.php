@@ -20,7 +20,8 @@ class CustomerController extends Controller
     {
         //
         $customer = Customers::simplePaginate(15);
-        return response($this->return(CustomerResource::collection($customer)->response()->getData(true),'success','',200),200);
+        $dataReturn = CustomerResource::collection($customer)->response()->getData(true);
+        return response($this->return($dataReturn,'success','',200),200);
     }
 
     /**
@@ -60,7 +61,10 @@ class CustomerController extends Controller
     public function show(Customers $customer)
     {
         //
-        return response($this->return(Array('data'=>CustomerResource::collection(array($customer))),'success','',200),200);
+        $dataReturn = Array(
+            'data'=> CustomerResource::collection(array($customer))
+        );
+        return response($this->return($dataReturn,'success','',200),200);
         
     }
 
@@ -87,7 +91,7 @@ class CustomerController extends Controller
             return response($this->return(null,'failed',$e->getMessage(),500),500);
         }
         
-        return response($this->return(Array('data'=>CustomerResource::collection(array($customer))),'success','This customer has been successfuly updated',200),200);
+        return response($this->return(null,'success','This customer has been successfuly updated',200),200);
     }
 
     /**
