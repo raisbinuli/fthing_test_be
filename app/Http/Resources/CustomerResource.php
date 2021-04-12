@@ -19,7 +19,10 @@ class CustomerResource extends JsonResource
         
         return [
             'id' => $this->id,
+            'email' => $this->email,
             'name' => $this->name,
+            'is_married' => $this->is_married,
+            'gender' => $this->gender,
             'address' => $this->address,
             'created_at' => $this->parseDate($this->created_at),
             'updated_at' => $this->parseDate($this->updated_at)
